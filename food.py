@@ -10,7 +10,7 @@ class SnakeFood:
 
     def create(self):
         self.location = []
-        num_range = range(-300, 301, 20)
+        num_range = range(-280, 281, 20)
         x = random.choice(num_range)
         y = random.choice(num_range)
         self.food.goto(x, y)
