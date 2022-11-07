@@ -61,18 +61,17 @@ while game_is_on:
         snake.cake.create()
         snake.grow()
         scoring.increase_score()
-        scoring.update_score()
 
     # collision detection
     if snake.body_parts[0].xcor() < -300 or snake.body_parts[0].xcor() > 300 \
             or snake.body_parts[0].ycor() < -300 or snake.body_parts[0].ycor() > 300:
-        snake.game_over()
-        game_is_on = False
+        scoring.reset()
+        snake.reset()
 
     for parts in snake.body_parts_locations:
         if parts.distance(snake.body_parts[0]) < 5:
-            snake.game_over()
-            game_is_on = False
+            scoring.reset()
+            snake.reset()
 
 # exit by click once dead
 screen.exitonclick()

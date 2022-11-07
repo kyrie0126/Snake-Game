@@ -1,5 +1,4 @@
 from turtle import Turtle, Screen
-import time
 from food import SnakeFood
 
 
@@ -37,10 +36,10 @@ class Snake(Turtle):
         if any(item in self.head_location for item in self.body_parts_locations):
             return "collision"
 
-    def game_over(self):
-        self.color("white")
-        self.penup()
-        self.hideturtle()
-        self.goto(0, 0)
-        self.write("Game Over", align="Center", font=("Courier", 20, "normal"))
+    def reset(self):
+        for segment in self.body_parts:
+            segment.hideturtle()
+        self.spawn()
+        self.head_location = []
+
 
