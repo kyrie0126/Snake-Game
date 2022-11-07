@@ -66,10 +66,12 @@ while game_is_on:
     # collision detection
     if snake.body_parts[0].xcor() < -300 or snake.body_parts[0].xcor() > 300 \
             or snake.body_parts[0].ycor() < -300 or snake.body_parts[0].ycor() > 300:
+        snake.game_over()
         game_is_on = False
 
     for parts in snake.body_parts_locations:
         if parts.distance(snake.body_parts[0]) < 5:
+            snake.game_over()
             game_is_on = False
 
 # exit by click once dead

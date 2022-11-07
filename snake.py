@@ -23,17 +23,24 @@ class Snake(Turtle):
             self.body_parts.append(self.body)
 
 
-
     def grow(self):
-        self.penup()
-        self.shape("square")
-        self.color("white")
-        last_piece = self.body_parts[-1].pos()
-        self.goto(last_piece)
-        self.body_parts.append(self)
+        for i in range(0, 3):
+            self.body = Turtle()
+            self.body.penup()
+            self.body.shape("square")
+            self.body.color("white")
+            last_piece = self.body_parts[-1]
+            self.body.goto(last_piece.pos())
+            self.body_parts.append(self.body)
 
     def tail_collision(self):
         if any(item in self.head_location for item in self.body_parts_locations):
             return "collision"
 
+    def game_over(self):
+        self.color("white")
+        self.penup()
+        self.hideturtle()
+        self.goto(0, 0)
+        self.write("Game Over", align="Center", font=("Courier", 20, "normal"))
 
